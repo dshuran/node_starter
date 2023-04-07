@@ -1,4 +1,4 @@
-import {Test} from "./test";
+import {MvnRunner} from "./MvnRunner";
 
-const test = new Test();
-console.log(test.p);
+const mvnRunner = new MvnRunner();
+mvnRunner.run();
