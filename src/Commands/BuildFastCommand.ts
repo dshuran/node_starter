@@ -1,6 +1,5 @@
 import {Command} from "./Command";
-import {echo, popd, pushd} from 'shelljs';
-import {projectPaths} from "../ProjectPaths";
+import {exec} from 'shelljs';
 
 
 export class BuildFastCommand extends Command {
@@ -14,9 +13,7 @@ export class BuildFastCommand extends Command {
     }
 
     public run() {
-        pushd(projectPaths.appengine);
-        echo('Hello');
-        popd();
+        exec('mvn clean install -DskipTests -T1C');
     }
 
 }

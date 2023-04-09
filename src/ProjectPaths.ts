@@ -1,3 +1,5 @@
+import * as Path from "path";
+
 interface IFixedProjectPaths {
     readonly appengineDir: string;
     readonly serverDir: string;
@@ -23,6 +25,10 @@ class ProjectsPaths {
 
     public get appengine() {
         return this.appengineDir;
+    }
+
+    public get runtime() {
+        return Path.join(this.appengine, 'runtime').toString();
     }
 
     public get server() {
