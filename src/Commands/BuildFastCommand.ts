@@ -1,5 +1,5 @@
 import {Command} from "./Command";
-import {exec} from 'shelljs';
+import {call} from "../utils";
 
 
 export class BuildFastCommand extends Command {
@@ -13,7 +13,7 @@ export class BuildFastCommand extends Command {
     }
 
     public run() {
-        exec('mvn clean install -DskipTests -T1C');
+        call('mvn clean install -DskipTests -T1C')
     }
 
 }
