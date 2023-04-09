@@ -1,5 +1,4 @@
 import {CmdArgsParser} from "./CmdArgsParser";
-import {BuildFastCommand} from "./Commands/BuildFastCommand";
 import {Command} from "./Commands/Command";
 
 export class MvnRunner {
@@ -7,10 +6,8 @@ export class MvnRunner {
     private cmdArgsParser: CmdArgsParser;
     private commands: Command[] = []
 
-    constructor() {
-        this.commands = [
-            new BuildFastCommand()
-        ];
+    constructor(commands: Command[]) {
+        this.commands = commands;
 
         this.cmdArgsParser = new CmdArgsParser(this.commands);
     }

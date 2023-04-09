@@ -7,7 +7,8 @@
     "start": "npm run build:live",
     "build": "tsc -p .",
     "build:live": "nodemon --watch 'src/**/*.ts' --exec \"ts-node\" src/index.ts",
-    "execute": "node lib/index.js"
+    "execute": "node lib/index.js",
+    "gen:bat": "node lib/gen.js"
   },
   "keywords": [],
   "author": "",

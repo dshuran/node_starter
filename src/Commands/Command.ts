@@ -5,5 +5,7 @@ export abstract class Command {
 
     public abstract run(): void;
 
+    public abstract getAlias(): string;
+
     public abstract getName(): string;
 }
