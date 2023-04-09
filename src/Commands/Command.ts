@@ -6,6 +6,4 @@ export abstract class Command {
     public abstract run(): void;
 
     public abstract getName(): string;
-
-    public abstract getAlias(): string;
 }

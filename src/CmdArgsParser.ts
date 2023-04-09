@@ -1,26 +1,32 @@
 import * as commandLineArgs from 'command-line-args';
+import {Command} from "./Commands/Command";
 
 export class CmdArgsParser {
 
     private commandLineOptions: commandLineArgs.CommandLineOptions;
+    private commands: Command[];
 
-    constructor() {
-        const optionDefinitions = [
-            { name: 'appengineDir', alias: 'c', type: String },
-            { name: 'development', alias: 'd', type: Boolean},
-            { name: 'appName', alias: 'a', type: String},
-            { name: 'port', alias: 'p', type: Number }
-        ]
+    constructor(commands: Command[]) {
+        this.commands = commands;
 
-        this.commandLineOptions = commandLineArgs(optionDefinitions)
+        const optionsDefinitions = [];
+        for (let command of this.commands) {
+            optionsDefinitions.push({
+                name: command.getName()
+            })
+        }
+
+        this.commandLineOptions = commandLineArgs(optionsDefinitions);
     }
 
-    public get appengineDir() {
-        return this.commandLineOptions.appengineDir;
-    }
+    public findCommand(): Command {
+        for (const command of this.commands) {
+            if (this.commandLineOptions[command.getName()] === null) {
+                return command;
+            }
+        }
 
-    public get serverDir() {
-        return this.commandLineOptions.serverDir;
+        throw new Error("Команда не найдена. Введите /help для списка доступных команд");
     }
 
 }

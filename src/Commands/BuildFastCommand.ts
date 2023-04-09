@@ -1,4 +1,6 @@
 import {Command} from "./Command";
+import {echo, popd, pushd} from 'shelljs';
+import {projectPaths} from "../ProjectPaths";
 
 
 export class BuildFastCommand extends Command {
@@ -12,6 +14,9 @@ export class BuildFastCommand extends Command {
     }
 
     public run() {
+        pushd(projectPaths.appengine);
+        echo('Hello');
+        popd();
     }
 
 }

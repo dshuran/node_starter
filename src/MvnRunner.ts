@@ -1,18 +1,23 @@
 import {CmdArgsParser} from "./CmdArgsParser";
-import {fixedProjectPaths} from "src/FixedProjectPaths";
+import {BuildFastCommand} from "./Commands/BuildFastCommand";
+import {Command} from "./Commands/Command";
 
 export class MvnRunner {
 
-    private cmdArgsParser = new CmdArgsParser();
-    // TODO: this.projectPaths
+    private cmdArgsParser: CmdArgsParser;
+    private commands: Command[] = []
 
-    public run() {
-        this.fillProjectPaths();
+    constructor() {
+        this.commands = [
+            new BuildFastCommand()
+        ];
+
+        this.cmdArgsParser = new CmdArgsParser(this.commands);
     }
 
-    private fillProjectPaths(): void {
-        fixedProjectPaths.appengineDir = this.cmdArgsParser.appengineDir;
-        fixedProjectPaths.serverDir = this.cmdArgsParser.serverDir;
+    public run() {
+        const command = this.cmdArgsParser.findCommand();
+        command.run();
     }
 
 }
