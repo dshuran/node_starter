@@ -9,8 +9,8 @@ interface IFixedProjectPaths {
  * Фиксированный набор путей, которые не могут быть выведены из других путей.
  */
 const fixedProjectPaths: IFixedProjectPaths = {
-    appengineDir: '',
-    serverDir: ''
+    appengineDir: 'YOUR_PATH',
+    serverDir: 'YOUR_PATH'
 }
 
 class ProjectsPaths {

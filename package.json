@@ -8,7 +8,7 @@
     "build": "tsc -p .",
     "build:live": "nodemon --watch 'src/**/*.ts' --exec \"ts-node\" src/index.ts",
     "execute": "node lib/index.js",
-    "gen:bat": "node lib/gen.js"
+    "gen:bat": "yarn build && node lib/gen.js"
   },
   "keywords": [],
   "author": "",
